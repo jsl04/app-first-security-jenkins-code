@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    registry = "<your-docker-hub-id>/my-cicd-app"
+    registry = "osanniko/my-cicd-app:49"
     registryCredential = 'dockerhub'
     dockerImage = ''
   }
@@ -66,9 +66,6 @@ pipeline {
         sh "docker rmi $registry:$BUILD_NUMBER"
       }
     }
-    // Uncomment for K8s app diployment step
-    // Commented section starts
-    /*
     stage('Deploy Application') {
       agent {
         kubernetes {
